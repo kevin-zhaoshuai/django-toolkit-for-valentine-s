@@ -1,37 +1,107 @@
 {% extends "base.html" %}
 
+{% load bootstrap_toolkit %}
+
 {% block content %}
 
-    <div class="well">
-        <h1>Django, meet Bootstrap!</h1>
-        <p>The django-bootstrap-toolkit application allows for an easy integration of Django and Bootstrap.</p>
-        <p><a class="btn btn-primary" href="https://github.com/dyve/django-bootstrap-toolkit/">Check it out on GitHub &raquo;</a></p>
-    </div>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('/static/digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="/static/css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="/static/js/jquery.js"></script>
+	<script type="text/javascript" src="/static/js/garden.js"></script>
+    <script type="text/javascript" src="/static/js/functions.js"></script>
+</head>
 
-    <div class="row">
-        <div class="span4">
-            <h2>Django</h2>
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="comments">/**</span><br />
+				<span class="space"/><span class="comments">* We got the first sight in Xidian and fall in love in SJTU,</span><br />
+				<span class="space"/><span class="comments">* Today is the special day for us but we can not meet together</span><br />
+				<span class="space"/><span class="comments">* so I make this website to celebrate our Valentine's Day.</span><br />
+				<span class="space"/><span class="comments">*/</span><br />
+				Boy i = <span class="keyword">new</span> Boy(<span class="string">"White FatFat"</span>);<br />
+				Girl u = <span class="keyword">new</span> Girl(<span class="string">"Sapphire"</span>);<br />
+				<span class="comments">// Mar 24, 2013, I told you I love you,it is the wonderful day for me </span><br />
+				i.love(u);<br />
+				<span class="comments">// Luckily, you accepted and became my Circle FatFat eversince.</span><br />
+				u.accepted();<br />
+				<span class="comments">// Since then, I miss u every day.</span><br />
+				i.miss(u);<br />
+				<span class="comments">// And take care of u and our love.</span><br />
+				i.takeCareOf(u);<br />
+				<span class="comments">// You say that you won't be so easy to marry me.</span><br />
+				<span class="comments">// So I keep waiting and I have confidence that you will.</span><br />
+				<span class="keyword">boolean</span> isHesitate = <span class="keyword">true</span>;<br />
+				<span class="keyword">while</span> (isHesitate) {<br />
+				<span class="placeholder"/>i.waitFor(u);<br />
+				<span class="placeholder"/><span class="comments">// I think it is an important decision</span><br />
+				<span class="placeholder"/><span class="comments">// and you should think it over.</span><br />
+				<span class="placeholder"/>isHesitate = u.thinkOver();<br />
+				}<br />
+				<span class="comments">// After a romantic wedding, we will live happily ever after.</span><br />
+				i.marry(u);<br />
+				i.liveHappilyWith(u);<br />
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						Xixi, I have fallen in love with you for
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						Love u forever and ever.<br/>
+						<div class="signature">- White FatFat</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2013, 2, 24);
+		together.setHours(20);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				startHeartAnimation();
+			}, 5000);
 
-            <p>Django is the excellent Python web framework that makes a programmer's life less repetitive.</p>
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 500);
 
-            <p><a class="btn" href="http://www.djangoproject.com">View details &raquo;</a></p>
-        </div>
-        <div class="span4">
-            <h2>Bootstrap</h2>
-
-            <p>Bootstrap is a beautiful CSS framework with an optional JavaScript add-on.</p>
-
-            <p><a class="btn" href="http://twitter.github.com/bootstrap/">View details &raquo;</a></p>
-        </div>
-        <div class="span4">
-            <h2>django-bootstrap-toolkit</h2>
-
-            <p>Is just a simple hustle to get two kinds of awesome together.</p>
-
-            <p><a class="btn" href="https://github.com/dyve/django-bootstrap-toolkit/">View details &raquo;</a></p>
-        </div>
-    </div>
-
-    <p>A big thanks to all the people that worked on Django and Bootstrap.</p>
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+</body>
+</html>
 
 {% endblock %}
