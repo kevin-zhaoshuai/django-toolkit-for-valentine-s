@@ -130,3 +130,4 @@ Thanks
 * to the authors of django-bootstrap-form for the inspiration
 * to Stefan Petre and Andy Rowles for the datepicker https://github.com/eternicode/bootstrap-datepicker
 # django-toolkit-for-valentine-s
+#for Valentine's Day
